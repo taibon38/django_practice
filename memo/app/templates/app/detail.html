@@ -1,0 +1,12 @@
+<div>
+    <a href="{%url 'app:index'%}">ホームに戻る</a>
+</div>
+
+<h2>{{memo.title}}</h2>
+<div>
+    {{memo.text|linebreaks|urlize}}
+</div>
+
+<!-- {{ memo.text | linebreaks | urlize }}についてです。これは、１つ目のチュートリアルでも出てきたタグフィルターを適用しています。
+linebreaks:テキストの改行を反映して表示してくれるタグです。
+urlize:URLとEmailアドレスをクリック可能な状態で表示します。 -->
