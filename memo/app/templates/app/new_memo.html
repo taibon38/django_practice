@@ -1,3 +1,10 @@
 <div>
     <a href="{% url 'app:index' %}">ホームに戻る</a>
 </div>
+
+<form action="{% url 'app:new_memo' %}" method="POST">{% csrf_token %}
+    {{form.as_p}}
+    <!-- {% csrf_token %}はセキュリティ対策のために必要なものです。これがないとエラーになるので気をつけましょう。 -->
+    <!-- .as_p をつけると、入力欄ごとにpタグで囲まれるため、きれいになる -->
+    <button type="submit" class="btn">保存</button>
+</form>

@@ -10,3 +10,12 @@
 <!-- {{ memo.text | linebreaks | urlize }}についてです。これは、１つ目のチュートリアルでも出てきたタグフィルターを適用しています。
 linebreaks:テキストの改行を反映して表示してくれるタグです。
 urlize:URLとEmailアドレスをクリック可能な状態で表示します。 -->
+
+<button><a class="btn" href="{% url 'app:edit_memo' memo.pk %}">編集</a></button>
+
+<form method="post" action="{% url 'app:delete_memo' memo.pk %}">{% csrf_token %}
+    <button class="btn" type="submit" onclick='return confirm("本当に削除しますか？");' )>削除</button>
+</form>
+<!-- 
+memo.pk　→vies.pyで作成したdetail関数のmemoから呼び出した。pkはプライマリキーの略。
+<int:memo_id>に渡す数字を指定 -->
