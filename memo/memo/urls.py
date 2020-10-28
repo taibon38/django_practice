@@ -19,5 +19,5 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('app.urls')), 
-    #この記述により、http://127.0.0.1:8000/にアクセスされたときは、appディレクトリ内のurls.pyファイルを参照することを定義 
+    #プロジェクトのURL設定。この記述により、http://127.0.0.1:8000/にアクセスされたときは、appディレクトリ内のurls.pyファイルを参照することを定義 
 ]

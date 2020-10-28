@@ -1,2 +1,31 @@
-<h1 style="color: brown;">好きなヒーローサイト</h1>
-<p>ここはトップページです</p>
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>君もアベンジャーズ</title>
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'heros/css/index.css' %}"> -->
+</head>
+
+<body>
+    <h1 style="color: brown;text-align:center;">好きなヒーローサイト</h1>
+    <!-- <h1>好きなヒーロー</h1> -->
+    <hr />
+    <div style="width: 70% ; margin: 0px auto;">
+        {%for hero in heros%}
+        <div>
+            <h3>{{hero.title}}</h3>
+            <img src="{{hero.image}}">
+            <div>{{hero.text|truncatechars:10}}</div>
+            <div style="text-align: right;">
+                <a href="{% url 'heros:detail' hero_id=hero.id %}">詳細へ</a>
+            </div>
+
+        </div>
+        <hr />
+        {%endfor%}
+    </div>
+</body>
+
+</html>
