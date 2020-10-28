@@ -1,8 +1,23 @@
+{% extends 'app/base.html'%}
+
+{% block content %}
 <div>
     <a href="{% url 'app:detail' memo.id %}">戻る</a>
 </div>
 
 <form action="{% url 'app:edit_memo' memo.id %}" method="POST">{% csrf_token %}
-    {{form.as_p}}
+    <table>
+        <tr>
+            <th>タイトル</th>
+            <td>{{form.title}}</td>
+            <!-- viewsで定義した form = MemoForm(request.POST,instance=memo) から取得している。-->
+        </tr>
+        <tr>
+            <th>テキスト</th>
+            <td>{{form.text}}</td>
+        </tr>
+    </table>
     <button class="btn" type="submit">保存</button>
 </form>
+
+{% endblock%}

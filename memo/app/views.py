@@ -41,5 +41,13 @@ def delete_memo(request,memo_id):
 
 def edit_memo(request,memo_id):
     memo = get_object_or_404(Memo,id=memo_id)
-    form = MemoForm
+    if request.method == "POST":
+        form = MemoForm(request.POST,instance=memo) 
+        #instanceでは、emoで指定したインスタンスに対応したフォームが作成されます
+        #受け取った情報を元に既存のMemoインスタンスを上書きするようにしています。
+        if form.is_valid():
+            form.save()
+            return redirect('app:index')
+    else:
+        form = MemoForm(instance=memo)
     return render(request,'app/edit_memo.html',{'form':form,'memo':memo})

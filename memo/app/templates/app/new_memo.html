@@ -1,3 +1,6 @@
+{% extends 'app/base.html'%}
+
+{% block content %}
 <div>
     <a href="{% url 'app:index' %}">ホームに戻る</a>
 </div>
@@ -8,3 +11,5 @@
     <!-- .as_p をつけると、入力欄ごとにpタグで囲まれるため、きれいになる -->
     <button type="submit" class="btn">保存</button>
 </form>
+
+{% endblock %}
