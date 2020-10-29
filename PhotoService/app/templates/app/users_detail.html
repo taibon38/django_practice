@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<h2 class="user-name">@{{user.username}}</h2>
+
+{{ user.is_superuser}}
+<!-- 管理者の場合はTrue -->
+
+<!-- ユーザーの持つ権限によって表示を切り替え -->
+{% if user.is_superuser %}
+<p>管理者</p>
+{% else %}
+<p>一般ユーザー</p>
+{% endif %}
+
+{% endblock %}
