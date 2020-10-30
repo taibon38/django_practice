@@ -4,6 +4,11 @@
 
 <h2 class="user-name">@{{user.username}}</h2>
 
+{% for photo in photos%}
+<img src="{{photo.image.url}}" class="photo-img">
+{% endfor%}
+
+
 {{ user.is_superuser}}
 <!-- 管理者の場合はTrue -->
 
