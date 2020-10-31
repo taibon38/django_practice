@@ -10,7 +10,9 @@
 </button>
 
 <!-- {% for photo in photos%}
-<img src="{{photo.image.url}}" class="photo-img">
+<a href="{% url 'app:photos_detail' photo.id %}">
+    <img src="{{photo.image.url}}" class="photo-img">
+</a>
 {% endfor%} -->
 
 {% else %}

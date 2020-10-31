@@ -133,6 +133,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # ログイン関連
-LOGIN_URL = 'app:login'
+LOGIN_URL = 'app:login'  # app/login.htmlに遷移
 LOGIN_REDIRECT_URL = 'app:index'
 LOGOUT_REDIRECT_URL = 'app:index'
