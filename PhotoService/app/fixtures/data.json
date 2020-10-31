@@ -1,0 +1,97 @@
+[
+    {
+        "model": "app.category",
+        "pk": 1,
+        "fields": {
+            "title": "タイトル名"
+        }
+    },
+    {
+        "model": "app.category",
+        "pk": 2,
+        "fields": {
+            "title": "タイトル名2"
+        }
+    },
+    {
+        "model": "app.category",
+        "pk": 3,
+        "fields": {
+            "title": "タイトル名"
+        }
+    },
+    {
+        "model": "app.category",
+        "pk": 4,
+        "fields": {
+            "title": "追加しました"
+        }
+    },
+    {
+        "model": "app.category",
+        "pk": 5,
+        "fields": {
+            "title": "adminから追加"
+        }
+    },
+    {
+        "model": "app.photo",
+        "pk": 1,
+        "fields": {
+            "title": "タイトル内容",
+            "comment": "",
+            "image": "photos/thor.jpg",
+            "category": 1,
+            "user": 1,
+            "created_at": "2020-10-31T17:41:28Z"
+        }
+    },
+    {
+        "model": "app.photo",
+        "pk": 2,
+        "fields": {
+            "title": "タイトル内容",
+            "comment": "",
+            "image": "/media/photos/ironman.jpeg",
+            "category": 2,
+            "user": 1,
+            "created_at": "2020-10-31T17:41:28Z"
+        }
+    },
+    {
+        "model": "app.photo",
+        "pk": 3,
+        "fields": {
+            "title": "タイトル内容",
+            "comment": "",
+            "image": "photos/thor.jpg",
+            "category": 1,
+            "user": 1,
+            "created_at": "2020-10-31T17:41:28Z"
+        }
+    },
+    {
+        "model": "app.photo",
+        "pk": 4,
+        "fields": {
+            "title": "追加しました",
+            "comment": "",
+            "image": "photos/thor.jpg",
+            "category": 1,
+            "user": 1,
+            "created_at": "2020-10-31T17:41:28Z"
+        }
+    },
+    {
+        "model": "app.photo",
+        "pk": 5,
+        "fields": {
+            "title": "adminから追加",
+            "comment": "",
+            "image": "photos/ave1.jpeg",
+            "category": 5,
+            "user": 2,
+            "created_at": "2020-10-31T01:15:26.415Z"
+        }
+    }
+]

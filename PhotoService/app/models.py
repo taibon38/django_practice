@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+# githubでも見れる。
 
 # Create your models here.
 
@@ -12,6 +13,7 @@ class Category(models.Model):
 
 
 class Photo(models.Model):
+    # title = models.CharField(max_length=150, primary_key=True)
     title = models.CharField(max_length=150)
     comment = models.TextField(blank=True)
     image = models.ImageField(upload_to='photos')

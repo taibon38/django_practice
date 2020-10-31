@@ -3,8 +3,20 @@
 {% block content %}
 <h2>トップページ</h2>
 
-{% for photo in photos%}
-<img src="{{ photo.image.url}}" class="photo-img">
-{% endfor %}
+{% if  request.user.is_authenticated %}
+<h3>Welcome! @{{user.username}}さん</h3>
+<button>
+    <a href="{% url 'app:users_detail' request.user.id  %}">こちらから投稿した写真がみれます</a>
+</button>
+
+<!-- {% for photo in photos%}
+<img src="{{photo.image.url}}" class="photo-img">
+{% endfor%} -->
+
+{% else %}
+<button style="margin-bottom: 20px;"><a href="{% url 'app:login' %}">ログインはこちら</a></button>
+<br>
+<button><a href="{% url 'app:signup' %}">新規登録はこちら</a></button>
+{% endif %}
 
 {% endblock %}
