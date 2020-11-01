@@ -5,7 +5,7 @@
 <div class="photo-detail">
     <img src="{{photo.image.url}}" class="photo-img">
     <div class="photo-info">
-        <a href="{% url 'app:users_detail' %} photo.user.id ">@{{photo.user}}</a>
+        <a href="{% url 'app:users_detail' photo.user.id %} ">@{{photo.user}}</a>
     </div>
 
     <h2>{{photo.title}}</h2>

@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.models import User
-from .models import Photo
+from .models import Photo, Category
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login  # ログイン認証で利用
 from django.contrib.auth.decorators import login_required  # ログインデコレータとして利用
@@ -71,3 +71,11 @@ def photos_delete(request, pk):
     photo = get_object_or_404(Photo, pk=pk)
     photo.delete()
     return redirect('app:users_detail', request.user.id)
+
+
+def photos_category(request, category):
+    # titleがURLの文字列と一致するCategoryインスタンスを取得
+    category = Category.objects.get(title=category)
+    # 取得したCategoryに属するPhoto一覧を取得
+    photos = Photo.objects.filter(category=category).order_by('-created_at')
+    return render(request, 'app/index.html', {'photos': photos, 'category': category})
