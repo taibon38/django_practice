@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'users',
     'app',
 ]
@@ -133,3 +134,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+# ImageFieldのアップロード先を指定し、画像を表示できるようにするための設定
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+# 'django.contrib.humanize'というモジュールで、intcommaのテンプレートタグを利用する際の指定。
+NUMBER_GROUPING = 3

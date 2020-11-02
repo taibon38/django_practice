@@ -24,7 +24,7 @@ class MyUserAdmin(UserAdmin):
     """カスタムユーザーモデルのAdmin"""
     fieldsets = (
         (None, {
-            'fields': ('email', 'password')}),
+            'fields': ('email', 'password', 'fav_products')}),
         (_('Permissions'), {'fields':
                             ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         (_('Important dates'), {'fields':

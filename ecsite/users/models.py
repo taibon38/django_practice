@@ -4,6 +4,7 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.core.mail import send_mail
 from django.utils import timezone
 from django.contrib.auth.base_user import BaseUserManager
+from app.models import Product
 
 # Create your models here.
 
@@ -45,14 +46,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     """カスタムユーザーモデル"""
     initial_point = 50000
     email = models.EmailField("メールアドレス", unique=True)
-    poit = models.PositiveIntegerField(default=initial_point)
+    point = models.PositiveIntegerField(default=initial_point)
+    fav_products = models.ManyToManyField(
+        Product, blank=True)  # お気に入りを登録。Productモデル
     is_staff = models.BooleanField("is_staff", default=False)
     is_active = models.BooleanField("is_active", default=True)
     date_joined = models.DateTimeField("date_joined", default=timezone.now)
 
     objects = UserManager()
 
-    USERNAME_FIELD = "email"
+    USERNAME_FIELD = "email"  # ユーザーを一意に判別するためのusernameという属性をメールアドレスに置き換えている
     EMAIL_FIELD = "email"
     REQUIRED_FIELDS = []  # createsuperuser を⾏うときに必須となるフィールドを指定できる。
 
