@@ -12,4 +12,7 @@ urlpatterns = [
     path('fav_products/', views.fav_products, name='fav_products'),
     path('toggle_fav_product_status/', views.toggle_fav_product_status,
          name='toggle_fav_product_status'),
+    path('cart/', views.cart, name="cart"),
+    path('change_item_amount/', views.change_item_amount,
+         name='change_item_amount'),
 ]

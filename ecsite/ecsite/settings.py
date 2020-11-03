@@ -141,3 +141,6 @@ MEDIA_URL = '/media/'
 
 # 'django.contrib.humanize'というモジュールで、intcommaのテンプレートタグを利用する際の指定。
 NUMBER_GROUPING = 3
+
+# セッションを毎回更新する
+SESSION_SAVE_EVERY_REQUEST = True
