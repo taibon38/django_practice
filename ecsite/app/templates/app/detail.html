@@ -13,7 +13,7 @@
         <div class="point-fav-section">
             <h4>{{product.price | intcomma }}ポイント</h4> 
             {% if request.user.is_authenticated %}
-                <form aciton="{% url 'app:toggle_fav_product_status' %}" method="post">{% csrf_token %}
+                <form action="{% url 'app:toggle_fav_product_status' %}" method="post">{% csrf_token %}
                     <input type="hidden" name="product_id" value="{{product.id}}">
                     {% if product in user.fav_products.all  %}
                         <input type="submit" name="submit" class="fav_button" value="お気に入りから外す" />

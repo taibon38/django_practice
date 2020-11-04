@@ -80,6 +80,20 @@ def fav_products(request):
     return render(request, 'app/index.html', {'products': products})
 
 
+# 郵便番号検索のAPIを利用する関数
+def get_address(zip_code):
+    REQUEST_URL = f'http://zipcloud.ibsnet.co.jp/api/search?zipcode={zip_code}'
+    address = ''
+    response = requests.get(REQUEST_URL)
+    response = json.loads(response.text)
+    # jsonで返ってくる値のreslutsをresultに代入。statusをapi_statusに代入
+    result, api_status = response['results'], response['status']
+    if api_status == 200:
+        result = result[0]
+        address = result['address1']+result['address2']+result['address3']
+    return address
+
+
 @login_required
 def cart(request):
     user = request.user
@@ -93,6 +107,7 @@ def cart(request):
 
     purchase_form = PurchaseForm(request.POST or None)
     if purchase_form.is_valid():
+
         # 住所検索ボタンが押された場合
         if 'search_address' in request.POST:
             zip_code = request.POST['zip_code']
@@ -127,11 +142,12 @@ def cart(request):
                 product = Product.objects.get(pk=product_id)
                 sale = Sale(product=product, user=request.user,
                             amount=num, price=product.price)
+                sale.save()
             # ポイントを削減
             user.point -= total_price
             user.save()
             del request.session['cart']
-            messages.success(requests, "商品の購入が完了しました！")
+            messages.success(request, "商品の購入が完了しました！")
             return redirect('app:cart')
 
         else:
@@ -159,17 +175,9 @@ def change_item_amount(request):
             del cart_session[product_id]  # 0以下は削除
     return redirect('app:cart')
 
-# 郵便番号検索のAPIを利用する関数
 
-
-def get_address(zip_code):
-    REQUEST_URL = f'http://zipcloud.ibsnet.co.jp/api/search?zipcode={zip_code}'
-    address = ''
-    response = requests.get(REQUEST_URL)
-    response = json.loads(response.text)
-    # jsonで返ってくる値のreslutsをresultに代入。statusをapi_statusに代入
-    result, api_status = response['results'], response['status']
-    if api_status == 200:
-        result = result[0]
-        address = result['address1']+result['address2']+result['address3']
-    return address
+@login_required
+def order_history(request):
+    user = request.user
+    sales = Sale.objects.filter(user=user).order_by('-created_at')
+    return render(request, 'app/order_history.html', {'sales': sales})

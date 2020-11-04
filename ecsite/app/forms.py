@@ -27,5 +27,6 @@ class PurchaseForm(forms.Form):  # 郵便番号と住所を入力し、内容に
     address = forms.CharField(
         label='住所',
         max_length=100,
-        required=False
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': '自動で入力されます'})
     )
