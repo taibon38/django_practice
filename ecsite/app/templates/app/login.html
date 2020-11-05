@@ -1,4 +1,7 @@
 {% extends 'app/base.html' %}
+{% load static %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
 
 {% block content %}
 <form class="form-signin" method="POST">{% csrf_token %}
@@ -12,8 +15,10 @@
     <label>パスワード</label>
     <input type="password" name="password">
     <br>
-    <input type="submit" value="ログイン">
+    <input type="submit" value="ログイン" class="btn btn-dark btn-sm">
 
 </form>
-
+<div style="text-align: center; margin: 2em 0;">
+    <img class="search" src="{% static 'svg/search.svg' %}">
+</div>
 {% endblock %}
