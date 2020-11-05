@@ -120,7 +120,6 @@ def cart(request):
             # 住所が取得できたらフォームに入力してあげる（→→ここが機能してなさそう）
             purchase_form = PurchaseForm(
                 initial={'zip_code': zip_code, 'address': address})
-
         # 購入ボタンが押された場合
         if 'buy_product' in request.POST:
             # 住所が入力済か確認する
@@ -143,15 +142,14 @@ def cart(request):
                 sale = Sale(product=product, user=request.user,
                             amount=num, price=product.price)
                 sale.save()
-            # ポイントを削減
-            user.point -= total_price
-            user.save()
-            del request.session['cart']
-            messages.success(request, "商品の購入が完了しました！")
-            return redirect('app:cart')
-
-        else:
-            return redirect('app:cart')
+                # ポイントを削減
+                user.point -= total_price
+                user.save()
+                del request.session['cart']
+                messages.success(request, "商品の購入が完了しました！")
+                return redirect('app:cart')
+            else:
+                return redirect('app:cart')
 
     context = {
         'purchase_form': purchase_form,
