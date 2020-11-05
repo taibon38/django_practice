@@ -1,6 +1,9 @@
 {% load static %}
 {% load humanize %}
 
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,13 +17,13 @@
             <div class="header-menu">
                 {% if request.user.is_authenticated %}
                     <span>Point:{{user.point | intcomma}}</span>
-                    <span><a href="{% url 'app:fav_products' %}">お気に入り</a></span>
-                    <span><a href="{% url 'app:cart' %}">カート</a></span>
-                    <span><a href="{% url 'app:order_history'%}">注文履歴</a></span>
-                    <span><a href="{% url 'app:logout' %}">logout</a></span>
+                    <span><a href="{% url 'app:fav_products' %}" class="animoBorderLeftRight">お気に入り</a></span>
+                    <span><a href="{% url 'app:cart' %}" class="animoBorderLeftRight ">カート</a></span>
+                    <span><a href="{% url 'app:order_history'%}" class="animoBorderLeftRight">注文履歴</a></span>
+                    <span><a href="{% url 'app:logout' %}" class="btn btn-dark btn-sm">logout</a></span>
                 {% else %}
-                    <span><a href="{% url 'app:login' %}">login</a></span>
-                    <span><a href="{% url 'app:signup' %}">signup</a></span>
+                    <span><a href="{% url 'app:login' %}" class="btn btn-primary">login</a></span>
+                    <span><a href="{% url 'app:signup' %}" class="btn btn-primary">signup</a></span>
                 {% endif %}
             </div>
         </div>

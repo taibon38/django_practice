@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'users',
     'app',
+    'bootstrap4',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -75,6 +76,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins':[
+                'bootstrap4.templatetags.bootstrap4',
+            ]
         },
     },
 ]
