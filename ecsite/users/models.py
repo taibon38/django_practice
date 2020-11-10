@@ -48,7 +48,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField("メールアドレス", unique=True)
     point = models.PositiveIntegerField(default=initial_point)
     fav_products = models.ManyToManyField(
-        Product, blank=True)  # お気に入りを登録。Productモデル
+        Product, blank=True)  # お気に入りを登録。Productモデルから。
     is_staff = models.BooleanField("is_staff", default=False)
     is_active = models.BooleanField("is_active", default=True)
     date_joined = models.DateTimeField("date_joined", default=timezone.now)
